@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1",
+  "dataset": "memory_cases",
+  "cases": [
+    {
+      "id": "memory_interaction_preference_small_steps",
+      "description": "FakeMemoryCurator 从用户原话提取一次一个小步骤的互动偏好。",
+      "kind": "curator",
+      "input": {
+        "session_id": "eval_session_memory_1",
+        "messages": [{"id": "msg_005", "role": "user", "content": "可以，而且我希望建议不要一次太多，每次一个小步骤就好。"}]
+      },
+      "expected": {
+        "candidate": {
+          "candidate_type": "interaction_preference",
+          "content_contains": ["一个小步骤", "不要一次给太多建议"],
+          "source_message_ids": ["msg_005"],
+          "source_type": "explicit_user_statement",
+          "sensitivity": "low",
+          "recommended_operation": "CREATE",
+          "requires_user_confirmation": false
+        }
+      }
+    },
+    {
+      "id": "memory_active_goal_work_communication",
+      "description": "真实 MemoryPolicy 审核数据集明确提供的未完成主题候选。",
+      "kind": "policy",
+      "input": {
+        "session_id": "eval_session_memory_2",
+        "user_memory_enabled": true,
+        "candidate": {
+          "candidate_type": "unfinished_topic",
+          "content": "用户希望下次继续聊如何与直属领导开口。",
+          "source_message_ids": ["msg_001", "msg_006"],
+          "source_type": "session_summary",
+          "confidence": 0.9,
+          "sensitivity": "medium",
+          "recommended_operation": "CREATE",
+          "requires_user_confirmation": true
+        }
+      },
+      "expected": {
+        "decision": {
+          "allowed": true,
+          "operation": "CREATE",
+          "requires_user_confirmation": true,
+          "reason_codes": ["medium_sensitivity_requires_confirmation", "unfinished_topic_requires_confirmation", "session_summary_requires_confirmation"]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,70 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Test / lint / type-check caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.crt
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Runtime artifacts
+artifacts/
+outputs/
+checkpoints/
+wandb/
+
+# Large data and model files
+data/
+models/
+model_weights/
+*.pt
+*.pth
+*.ckpt
+*.safetensors
+*.bin
+
+# User or consultation data
+private_data/
+user_data/
+conversation_exports/
+
+# Temporary files
+tmp/
+temp/
+*.tmp

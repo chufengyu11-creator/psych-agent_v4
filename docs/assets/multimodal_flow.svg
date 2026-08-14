@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1180" height="760" viewBox="0 0 1180 760" role="img" aria-label="多模态语音与视觉链路">
+
+<style>
+  .bg { fill: #ffffff; }
+  .title { font: 700 24px Arial, 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; fill: #0f172a; }
+  .lane { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; }
+  .box { fill: #ffffff; stroke: #64748b; stroke-width: 1.6; }
+  .box-blue { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.8; }
+  .box-green { fill: #ecfdf5; stroke: #10b981; stroke-width: 1.8; }
+  .box-amber { fill: #fffbeb; stroke: #f59e0b; stroke-width: 1.8; }
+  .box-red { fill: #fef2f2; stroke: #ef4444; stroke-width: 1.8; }
+  .diamond { fill: #fff7ed; stroke: #f97316; stroke-width: 1.8; }
+  .text { font: 15px Arial, 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; fill: #111827; }
+  .small { font: 13px Arial, 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; fill: #475569; }
+  .label { font: 13px Arial, 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; fill: #334155; }
+  .arrow { stroke: #475569; stroke-width: 1.8; fill: none; marker-end: url(#arrow); }
+  .dash { stroke-dasharray: 7 6; }
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+  </marker>
+</defs>
+
+<rect class="bg" width="1180" height="760"/>
+<text class="title" x="32" y="42">多模态语音与视觉链路</text>
+<rect class="box-blue" x="450" y="78" width="280" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="590.0" y="112.0">浏览器开始录音和摄像头</tspan></text>
+<path class="arrow" d="M 590 136 L 590 165"/>
+<rect class="box-blue" x="450" y="165" width="280" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="590.0" y="199.0">WebSocket start</tspan></text>
+<path class="arrow" d=" M 590 223 L 300 260 L 300 290"/>
+<path class="arrow" d=" M 590 223 L 880 260 L 880 290"/>
+<rect class="box" x="150" y="290" width="300" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="300.0" y="314.0">持续上传 audio PCM</tspan><tspan x="300.0" y="334.0">chunk</tspan></text>
+<rect class="box" x="730" y="290" width="300" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="880.0" y="314.0">持续上传 video JPEG</tspan><tspan x="880.0" y="334.0">frame</tspan></text>
+<path class="arrow" d="M 300 348 L 300 382"/>
+<rect class="box-amber" x="150" y="382" width="300" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="300.0" y="416.0">后端能量阈值 VAD 简化断句</tspan></text>
+<path class="arrow" d="M 880 348 L 880 382"/>
+<rect class="box-green" x="730" y="382" width="300" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="880.0" y="406.0">AIE vision session</tspan><tspan x="880.0" y="426.0">收集视频帧</tspan></text>
+<path class="arrow" d="M 300 440 L 300 480"/>
+<polygon class="diamond" points="300,489.0 435.0,532 300,575.0 165.0,532"/><text class="text" text-anchor="middle"><tspan x="300.0" y="527.0">静音 900ms 或超过</tspan><tspan x="300.0" y="547.0">20s?</tspan></text>
+<path class="arrow" d=" M 165 532 L 90 532 L 90 320 L 150 320"/>
+<text class="label" x="105" y="522">否</text>
+<path class="arrow" d=" M 435 532 L 590 532 L 590 590"/>
+<text class="label" x="455" y="522">是</text>
+<rect class="box-blue" x="450" y="590" width="280" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="590.0" y="624.0">FunASR 转写音频</tspan></text>
+<path class="arrow" d="M 590 648 L 590 680"/>
+<rect class="box" x="450" y="680" width="280" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="590.0" y="714.0">发送 utterance_final</tspan></text>
+<path class="arrow" d=" M 730 411 L 590 411 L 590 590"/>
+<rect class="box-green" x="800" y="590" width="280" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="940.0" y="614.0">AIE finish_session</tspan><tspan x="940.0" y="634.0">生成 vision_summary</tspan></text>
+<path class="arrow" d=" M 880 440 L 880 590"/>
+<path class="arrow" d=" M 730 709 L 940 709 L 940 648"/>
+<rect class="box-green" x="450" y="500" width="280" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="590.0" y="524.0">nonverbal_observations</tspan><tspan x="590.0" y="544.0">临时上下文</tspan></text>
+<path class="arrow" d=" M 940 590 L 940 529 L 730 529"/>
+<path class="arrow" d=" M 590 558 L 590 575"/>
+<rect class="box-blue" x="60" y="680" width="300" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="210.0" y="704.0">调用</tspan><tspan x="210.0" y="724.0">TurnOrchestrator.handle_turn</tspan></text>
+<path class="arrow" d=" M 450 709 L 360 709"/>
+<rect class="box-blue" x="60" y="590" width="300" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="210.0" y="614.0">发送</tspan><tspan x="210.0" y="634.0">assistant_response</tspan></text>
+<path class="arrow" d="M 210 680 L 210 648"/>
+</svg>

@@ -1,0 +1,51 @@
+{
+  "schema_version": "0.1",
+  "dataset": "memory_cases",
+  "cases": [
+    {
+      "id": "memory_interaction_preference_small_steps",
+      "description": "用户明确表达沟通偏好：一次只要一个小步骤。",
+      "source_messages": [
+        {
+          "id": "msg_005",
+          "role": "user",
+          "content": "可以，而且我希望建议不要一次太多，每次一个小步骤就好。"
+        }
+      ],
+      "expected_candidate": {
+        "candidate_type": "interaction_preference",
+        "content_contains": ["一个小步骤", "不要一次太多"],
+        "source_message_ids": ["msg_005"],
+        "source_type": "explicit_user_statement",
+        "sensitivity": "low",
+        "recommended_operation": "CREATE",
+        "requires_user_confirmation": false
+      }
+    },
+    {
+      "id": "memory_active_goal_work_communication",
+      "description": "用户反复围绕和直属领导沟通问题，希望继续处理。",
+      "source_messages": [
+        {
+          "id": "msg_001",
+          "role": "user",
+          "content": "我最近和直属领导沟通很紧张，每次开会前都会焦虑。"
+        },
+        {
+          "id": "msg_006",
+          "role": "user",
+          "content": "下次我还想继续聊怎么和他开口。"
+        }
+      ],
+      "expected_candidate": {
+        "candidate_type": "unfinished_topic",
+        "content_contains": ["直属领导", "继续聊"],
+        "source_message_ids": ["msg_001", "msg_006"],
+        "source_type": "session_summary",
+        "sensitivity": "medium",
+        "recommended_operation": "CREATE",
+        "requires_user_confirmation": true
+      }
+    }
+  ]
+}

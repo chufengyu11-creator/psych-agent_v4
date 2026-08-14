@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "dataset": "summary_cases",
+  "cases": [
+    {
+      "id": "summary_work_stress_long_dialogue",
+      "description": "压缩较早消息，同时保留当前问题、策略和来源。",
+      "input": {
+        "session_id": "eval_session_summary_1",
+        "messages": [
+          {"id": "msg_001", "role": "user", "content": "我最近和直属领导沟通很紧张，每次开会前都会焦虑。"},
+          {"id": "msg_002", "role": "assistant", "content": "听起来这段沟通关系让你一直处在紧绷里。"},
+          {"id": "msg_003", "role": "user", "content": "我不想继续分析情绪，我现在更想知道下一步具体怎么做。"}
+        ],
+        "current_state": {
+          "session_goal": "用低压力的小步骤处理与直属领导的沟通",
+          "active_topics": [{"value": "与直属领导沟通紧张", "source_message_id": "msg_001"}],
+          "reported_emotions": [{"value": "焦虑", "source_message_id": "msg_001"}]
+        },
+        "interventions": [
+          {"id": "int_001", "assistant_message_id": "msg_002", "strategy": "reflective_listening", "objective": "理解当前困扰", "status": "evaluated"}
+        ]
+      },
+      "expected": {
+        "covered_from": "msg_001",
+        "covered_to": "msg_003",
+        "current_problem_contains": ["直属领导", "焦虑"],
+        "session_goal_contains": ["低压力", "沟通"],
+        "important_user_statements_contains": ["不想继续分析情绪", "下一步具体怎么做"],
+        "strategies_attempted_contains": ["reflective_listening"],
+        "source_message_ids_must_include": ["msg_001", "msg_003"]
+      }
+    }
+  ]
+}

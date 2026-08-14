@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>心理支持对话助手</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="workspace" aria-label="心理支持对话助手">
+        <aside class="sidebar">
+          <div class="brand">
+            <div class="mark" aria-hidden="true">PS</div>
+            <div>
+              <h1>心理支持对话助手</h1>
+              <p id="runtimeStatus">正在检查服务状态</p>
+            </div>
+          </div>
+
+          <form class="settings" id="settingsForm">
+            <label>
+              <span>用户 ID</span>
+              <input id="userId" name="userId" value="1" autocomplete="off" />
+            </label>
+            <label>
+              <span>会话 ID</span>
+              <input id="sessionId" name="sessionId" value="session-1" autocomplete="off" />
+            </label>
+            <label class="switch-row">
+              <span>长期记忆</span>
+              <button class="switch" id="memorySwitch" type="button" aria-pressed="false">
+                <span></span>
+              </button>
+            </label>
+            <div class="sidebar-actions">
+              <button id="newSessionButton" type="button">新会话</button>
+              <button id="closeSessionButton" type="button">归档并总结</button>
+            </div>
+          </form>
+
+          <div class="status-panel" id="statusPanel">
+            <div>
+              <span>会话</span>
+              <strong id="sessionState">未开始</strong>
+            </div>
+            <div>
+              <span>状态版本</span>
+              <strong id="stateVersion">0</strong>
+            </div>
+            <div>
+              <span>长期记忆写入</span>
+              <strong id="memoryWrites">0</strong>
+            </div>
+          </div>
+
+          <section class="side-panel" aria-label="历史会话">
+            <div class="side-panel-header">
+              <h2>历史会话</h2>
+              <button id="refreshSessionsButton" type="button">刷新</button>
+            </div>
+            <div class="session-list" id="sessionList"></div>
+          </section>
+
+          <section class="side-panel" aria-label="长期记忆">
+            <div class="side-panel-header">
+              <h2>长期记忆</h2>
+              <button id="refreshMemoriesButton" type="button">刷新</button>
+            </div>
+            <div class="memory-list" id="memoryList"></div>
+          </section>
+        </aside>
+
+        <section class="chat-panel">
+          <div class="messages" id="messages" aria-live="polite">
+            <article class="message assistant">
+              <p>你好，我在这里。你可以直接说现在发生了什么，或者告诉我你希望我用什么方式陪你聊。</p>
+            </article>
+          </div>
+
+          <section class="voice-composer" aria-label="语音视频输入">
+            <video id="cameraPreview" autoplay muted playsinline></video>
+            <div class="voice-controls">
+              <button id="recordButton" type="button">开始说话</button>
+              <p id="voiceStatus">麦克风和摄像头尚未开启</p>
+            </div>
+            <p class="transcript" id="transcriptText"></p>
+          </section>
+        </section>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="/static/app.js" type="module"></script>
+  </body>
+</html>

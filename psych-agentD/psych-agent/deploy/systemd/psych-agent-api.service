@@ -1,0 +1,25 @@
+[Unit]
+Description=Psych Agent FastAPI service
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=psych-agent
+Group=psych-agent
+WorkingDirectory=/opt/psych-agent/current
+EnvironmentFile=/etc/psych-agent/psych-agent.env
+ExecStartPre=/opt/psych-agent/venv/bin/python scripts/preflight_linux.py
+ExecStart=/opt/psych-agent/venv/bin/python -m uvicorn app.main:app --host ${APP_HOST} --port ${APP_PORT}
+Restart=on-failure
+RestartSec=5s
+TimeoutStartSec=90s
+TimeoutStopSec=30s
+KillSignal=SIGINT
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

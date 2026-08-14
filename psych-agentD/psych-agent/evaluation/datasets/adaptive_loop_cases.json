@@ -1,0 +1,43 @@
+{
+  "schema_version": "0.1",
+  "dataset": "adaptive_loop_cases",
+  "cases": [
+    {
+      "id": "adaptive_work_stress_reject_reflection",
+      "description": "用户先表达工作沟通压力，随后拒绝继续情绪反映并要求具体步骤。",
+      "input": {
+        "user_id": "eval_user_adaptive_1",
+        "session_id": "eval_session_adaptive_1",
+        "user_turns": [
+          "我最近和直属领导沟通很紧张，每次开会前都会焦虑。",
+          "我不想继续分析情绪，我现在更想知道下一步具体怎么做。"
+        ]
+      },
+      "expected": {
+        "feedback": {
+          "explicit_feedback": "negative",
+          "strategy_fit": "poor",
+          "objective_progress": "not_achieved",
+          "recommended_adjustment": "switch_or_clarify_strategy"
+        },
+        "next_strategy_one_of": ["clarification", "collaborative_problem_solving", "action_planning"],
+        "rejected_strategy": "reflective_listening",
+        "required_avoid": ["repeat the previous strategy"]
+      }
+    },
+    {
+      "id": "adaptive_user_prefers_small_steps",
+      "description": "用户明确表达一次只想要一个小步骤。",
+      "input": {
+        "user_id": "eval_user_adaptive_2",
+        "session_id": "eval_session_adaptive_2",
+        "user_turns": ["可以给建议，但我希望不要一次太多，每次一个小步骤就好。"]
+      },
+      "expected": {
+        "state_delta": {
+          "strategy_preferences_contains": "具体、低压力的行动建议"
+        }
+      }
+    }
+  ]
+}

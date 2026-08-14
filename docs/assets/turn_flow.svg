@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1560" viewBox="0 0 1200 1560" role="img" aria-label="一轮回答流程">
+
+<style>
+  .bg { fill: #ffffff; }
+  .title { font: 700 24px Arial, 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; fill: #0f172a; }
+  .lane { fill: #f8fafc; stroke: #cbd5e1; stroke-width: 1.5; }
+  .box { fill: #ffffff; stroke: #64748b; stroke-width: 1.6; }
+  .box-blue { fill: #eff6ff; stroke: #3b82f6; stroke-width: 1.8; }
+  .box-green { fill: #ecfdf5; stroke: #10b981; stroke-width: 1.8; }
+  .box-amber { fill: #fffbeb; stroke: #f59e0b; stroke-width: 1.8; }
+  .box-red { fill: #fef2f2; stroke: #ef4444; stroke-width: 1.8; }
+  .diamond { fill: #fff7ed; stroke: #f97316; stroke-width: 1.8; }
+  .text { font: 15px Arial, 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; fill: #111827; }
+  .small { font: 13px Arial, 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; fill: #475569; }
+  .label { font: 13px Arial, 'Microsoft YaHei', 'Noto Sans CJK SC', sans-serif; fill: #334155; }
+  .arrow { stroke: #475569; stroke-width: 1.8; fill: none; marker-end: url(#arrow); }
+  .dash { stroke-dasharray: 7 6; }
+</style>
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <path d="M 0 0 L 10 5 L 0 10 z" fill="#475569"/>
+  </marker>
+</defs>
+
+<rect class="bg" width="1200" height="1560"/>
+<text class="title" x="32" y="42">一轮回答流程</text>
+<rect class="box-blue" x="455" y="78" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="600.0" y="102.0">用户输入文本 / ASR</tspan><tspan x="600.0" y="122.0">transcript</tspan></text>
+<rect class="box-blue" x="455" y="160" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="600.0" y="194.0">保存 user message</tspan></text>
+<rect class="box-blue" x="455" y="242" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="600.0" y="266.0">读取上一版 session</tspan><tspan x="600.0" y="286.0">state</tspan></text>
+<path class="arrow" d="M 600 136 L 600 160"/>
+<path class="arrow" d="M 600 218 L 600 242"/>
+<polygon class="diamond" points="600,304.0 750.0,350 600,396.0 450.0,350"/><text class="text" text-anchor="middle"><tspan x="600.0" y="345.0">是否有上一轮 pending</tspan><tspan x="600.0" y="365.0">intervention?</tspan></text>
+<path class="arrow" d="M 600 300 L 600 304"/>
+<path class="arrow" d=" M 500 350 L 240 350 L 240 420"/>
+<text class="label" x="360" y="340">有</text>
+<rect class="box-amber" x="95" y="420" width="290" height="62" rx="10"/><text class="text" text-anchor="middle"><tspan x="240.0" y="446.0">feedback_evaluator:</tspan><tspan x="240.0" y="466.0">评估上一轮反馈</tspan></text>
+<path class="arrow" d=" M 700 350 L 930 350 L 930 420"/>
+<text class="label" x="795" y="340">无</text>
+<rect class="box" x="785" y="420" width="290" height="62" rx="10"/><text class="text" text-anchor="middle"><tspan x="930.0" y="456.0">读取最近消息</tspan></text>
+<path class="arrow" d=" M 240 482 L 240 535 L 600 535"/>
+<path class="arrow" d=" M 930 482 L 930 535 L 600 535"/>
+<rect class="box" x="455" y="535" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="600.0" y="569.0">准备风险与状态输入</tspan></text>
+<path class="arrow" d="M 600 593 L 600 630"/>
+<rect class="box-red" x="230" y="650" width="280" height="62" rx="10"/><text class="text" text-anchor="middle"><tspan x="370.0" y="686.0">risk_agent: 风险识别</tspan></text>
+<rect class="box-green" x="690" y="650" width="280" height="62" rx="10"/><text class="text" text-anchor="middle"><tspan x="830.0" y="676.0">state_tracker /</tspan><tspan x="830.0" y="696.0">fast_state_tracker</tspan></text>
+<path class="arrow" d=" M 600 630 L 370 630 L 370 650"/>
+<path class="arrow" d=" M 600 630 L 830 630 L 830 650"/>
+<path class="arrow" d=" M 370 712 L 370 760 L 600 760"/>
+<path class="arrow" d=" M 830 712 L 830 760 L 600 760"/>
+<rect class="box" x="455" y="760" width="290" height="62" rx="10"/><text class="text" text-anchor="middle"><tspan x="600.0" y="786.0">state_reducer: 合并</tspan><tspan x="600.0" y="806.0">risk/state/feedback</tspan></text>
+<path class="arrow" d="M 600 822 L 600 845"/>
+<rect class="box" x="455" y="845" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="600.0" y="879.0">保存新的 state version</tspan></text>
+<path class="arrow" d="M 600 903 L 600 930"/>
+<polygon class="diamond" points="600,944.0 750.0,990 600,1036.0 450.0,990"/><text class="text" text-anchor="middle"><tspan x="600.0" y="975.0">是否硬安全路由:</tspan><tspan x="600.0" y="995.0">crisis /</tspan><tspan x="600.0" y="1015.0">human?</tspan></text>
+<path class="arrow" d=" M 500 990 L 250 990 L 250 1080"/>
+<text class="label" x="365" y="980">是</text>
+<rect class="box-red" x="95" y="1080" width="310" height="62" rx="10"/><text class="text" text-anchor="middle"><tspan x="250.0" y="1106.0">SafetyRouter:</tspan><tspan x="250.0" y="1126.0">固定安全回复</tspan></text>
+<path class="arrow" d=" M 250 1142 L 250 1390 L 600 1390"/>
+<path class="arrow" d=" M 700 990 L 930 990 L 930 1045"/>
+<text class="label" x="810" y="980">否</text>
+<rect class="box" x="785" y="1045" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="930.0" y="1069.0">检测 memory query</tspan><tspan x="930.0" y="1089.0">intent</tspan></text>
+<path class="arrow" d="M 930 1103 L 930 1127"/>
+<rect class="box" x="785" y="1127" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="930.0" y="1151.0">memory_retriever:</tspan><tspan x="930.0" y="1171.0">检索长期记忆</tspan></text>
+<path class="arrow" d="M 930 1185 L 930 1209"/>
+<rect class="box" x="785" y="1209" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="930.0" y="1233.0">strategy_planner:</tspan><tspan x="930.0" y="1253.0">选择对话策略</tspan></text>
+<path class="arrow" d="M 930 1267 L 930 1291"/>
+<polygon class="diamond" points="930,1262.0 1080.0,1305 930,1348.0 780.0,1305"/><text class="text" text-anchor="middle"><tspan x="930.0" y="1300.0">async deep</tspan><tspan x="930.0" y="1320.0">state 是否启用?</tspan></text>
+<text class="label" x="745" y="1298">是</text>
+<path class="arrow dash" d=" M 780 1305 L 600 1305 L 600 1360"/>
+<rect class="box-amber" x="455" y="1360" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="600.0" y="1384.0">enqueue deep_state</tspan><tspan x="600.0" y="1404.0">task</tspan></text>
+<path class="arrow" d=" M 930 1348 L 930 1390 L 600 1390"/>
+<text class="label" x="950" y="1368">否</text>
+<rect class="box" x="455" y="1420" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="600.0" y="1444.0">读取 summary/近期消息 -&gt;</tspan><tspan x="600.0" y="1464.0">context_builder</tspan></text>
+<path class="arrow" d="M 600 1390 L 600 1420"/>
+<rect class="box-blue" x="785" y="1390" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="930.0" y="1414.0">response_agent:</tspan><tspan x="930.0" y="1434.0">生成草稿</tspan></text>
+<path class="arrow" d=" M 745 1449 L 785 1419"/>
+<rect class="box-green" x="785" y="1470" width="290" height="58" rx="10"/><text class="text" text-anchor="middle"><tspan x="930.0" y="1494.0">output_guard -&gt;</tspan><tspan x="930.0" y="1514.0">保存回复 -&gt; post_turn</tspan></text>
+<path class="arrow" d="M 930 1448 L 930 1470"/>
+<path class="arrow" d=" M 785 1499 L 600 1499 L 600 1518"/>
+<rect class="box-blue" x="455" y="1518" width="290" height="34" rx="10"/><text class="text" text-anchor="middle"><tspan x="600.0" y="1540.0">返回 assistant response</tspan></text>
+</svg>
